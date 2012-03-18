@@ -54,7 +54,7 @@
 
 ## Создание новых ~компонентов~
 
-При создании нового ~компоненнта~ пишите HTML код, а потом CSS. Так вы сможете This means you can visually see which CSS properties are naturally inherited and thus avoid reapplying redundant styles.
+При создании нового ~компоненнта~ пишите сначала HTML код, а потом CSS. Так вы сможете visually see which CSS properties are naturally inherited and thus avoid reapplying redundant styles.
 
 
 ## Объектно ориентированный CSS (OOCSS)
@@ -118,15 +118,15 @@ Shorthand is good, but easily misused.
 
 ## Селекторы
 
-Keep selectors efficient and portable.
+Сохраняйте селекторы эфективными и переносимыми.
 
-Heavily location-based selectors are bad for a number of reasons. For example, take `.sidebar h3 span{}`. This selector is too location-based and thus we cannot move that `span` outside of a `h3` outside of `.sidebar` and maintain styling.
+Тяжелые привязанные к расположению селекторы плохи по ряду причин. Возьмем для примера `.sidebar h3 span{}`. Этот селектор слишклм сильно привязан к положению элемента в HTML, и, таким образом, мы не можем перенести элемент `span` из `h3`, который, в свою очередь, должен оставаться внутри `.sidebar`.
 
-Selectors which are too long also introduce performance issues; the more checks in a selector (e.g. `.sidebar h3 span` has three checks, `.content ul p a` has four), the more work the browser has to do.
+Слишком длинные селекторы также могут вызвать проблемы с производительностью. Чем больше проверок в селекторах (наприме в `.sidebar h3 span` 3 проверки, а в `.content ul p a` -- четыре), тем больше работы для браузера.
 
-Make sure styles aren’t dependent on location where possible, and make sure selectors are nice and short.
+Убедитесь что стили не привязаны к расположению в HTML, где это возможно и что селекторы красивые и короткие.
 
-**Помните:** classes are neither semantic or insemantic; they are sensible or insensible! Stop stressing about ‘semantic’ class names and pick something sensible and futureproof.
+**Помните:** классы не бывают семантичными или несемантичными; они бывают разумны или неразумны! Хватит думать о семантичных именах классов и выберете что-то разумное и что будет служить долго.
 
 **См. также:**
 
@@ -135,9 +135,9 @@ Make sure styles aren’t dependent on location where possible, and make sure se
 
 ### Слишком точные селекторы
 
-An over-qualified selector is one like `div.promo`. We could probably get the same effect from just using `.promo`. Of course sometimes we will _want_ to qualify a class with an element (e.g. if you have a generic `.error` class that needs to look different when applied to different elements (e.g. `.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it where possible.
+Слишком точные селекторы &mdash; это например `div.promo`. Мы скорее всего могли добиться тогоже эффекта используя `.promo`. Конечно, иногда мы _хотим_ установить свойство для класса и элемента (например если у вас есть объщий класс `.error`, который должен выгляжеть иначе когда применяется к разным элементам (пример: `.error{ color:red; }` `div.error{ padding:14px; }`)), но в основном старайтесь избегать этого по возможности.
 
-Another example of an over-qualified selector might be `ul.nav li a{}`. As above, we can instantly drop the `ul` and because we know `.nav` is a list, we therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}` down to just `.nav a{}`.
+Другой пример слишком точного селектора &mdash; `ul.nav li a{}`. Как и выше, здесь мы можем опустить `ul`, и т.к. мы знаем что `.nav` &mdash; это список, каждый эдемент `a` _обязан_ быть внутри `li`. Таким образом мы можем упростить `ul.nav li a{}` до просто `.nav a{}`.
 
 ### Производительность
 
@@ -161,9 +161,9 @@ Be explicit; target the element you want to affect, not its parent. Never assume
 
 ## ID и классы
 
-Do not use IDs in CSS **at all**. They can be used in your markup for JS and fragment-identifiers but use only classes for styling. We don’t want to see a single ID in this (or any other) stylesheet.
+Не используйте ID в CSS **вообще**. Они могут быть полезны для JavaScript и ссылок внутри документа, но используйте только классы в CSS. Мы не хотим видеть не единого ID ни в одном CSS документе.
 
-Classes come with the benefit of being reusable (even if we don’t want to, we can) and they have a nice, low specificity.
+Классы имеют большое преимущество -- возможность многоразового использования (даже если вы не хотите, вы всеравно можете), и еще они ~низкоспецифичные~.
 
 **См. также:**
 
@@ -172,9 +172,9 @@ Classes come with the benefit of being reusable (even if we don’t want to, we 
 
 ## `!important`
 
-It is okay to use `!important` on helper classes only. To add `!important` preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will **always** want this rule to take precedence.
+Это нормально использовать `!important` в классах-помощниках, и только в них. Будет праdильно добавить `!important` в `.error` (`.error{ color:red!important }`), т.к. вы знаете что хотите чьлюы это правило _всегда_ имело приоритет.
 
-Using `!important` reactively, e.g. to get yourself out of nasty specificity situations, is not advised. Rework your CSS and try to combat these issues by refactoring your selectors. Keeping your selectors short and avoiding IDs will help out here massively.
+Не рекомендуется использовать `!important` повсеместно, например что-бы переопределить свойство определенное с более высоким уровнем вложенности. Переработайте свой код и попытайтесь решить эту проблему рефакторингом селекторов. Поддержание селекторов короткими и избегание ID сильно поможет с проблемами такого рода.
 
 
 ## Магические числа и абсолютные значения
@@ -190,7 +190,7 @@ Every time you hard code a number think twice; if you can avoid it by using keyw
 Every hard-coded measurement you set is a commitment you might not necessarily want to keep.
 
 
-## Conditional stylesheets
+## Отдельные стили для IE (и других браузеров)
 
 IE stylesheets can, by and large, be totally avoided. The only time an IE stylesheet may be required is to circumvent blatant lack of support (e.g. PNG fixes).
 
