@@ -54,16 +54,17 @@
 
 ## Создание новых ~компонентов~
 
-When building a new component write markup **before** CSS. This means you can visually see which CSS properties are naturally inherited and thus avoid reapplying redundant styles.
+При создании нового ~компоненнта~ пишите HTML код, а потом CSS. Так вы сможете This means you can visually see which CSS properties are naturally inherited and thus avoid reapplying redundant styles.
 
 
 ## Объектно ориентированный CSS (OOCSS)
 
-When building components try and keep a DRY, OO frame of mind.
+При создании компонентов старайтесь придерживаться принципов DRY (Don't Repeat Yourself &mdash; не повторяйся) и OO (Обектно Ориентированный)
 
-Instead of building dozens of unique components, try and spot repeated design patterns abstract them; build these skeletons as base ‘objects’ and then peg classes onto these to extend their styling for more unique circumstances.
+Вместо создания множества уникальных компонентов попытайтесь найти повторяющиеся участки в дизайне и абстрагируйте их. ~После чего постройте скелет на основе этих объектов, и потом добавляйте дополнительные классы чтобы расширить их стили для более уникального вида.~
 
-If you have to build a new component split it into structure and skin; build the structure of the component using very generic classes so that we can reuse that construct and then use more specific classes to skin it up and add design treatments.
+~Если вы создаете новый компонент, разделите его на структуру и "тему оформления". Постройте структуру используя очень объщие классы, которые мы можем использовать повторно, и затем используйте более специфичные классы чтобы настроить "тему оформления"~
+
 
 **См. также:**
 
@@ -71,20 +72,20 @@ If you have to build a new component split it into structure and skin; build the
 * [stubbornella.org/&hellip;/the-media-object-saves-hundreds-of-lines-of-code](http://stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code)
 
 
-## Layout ~Разметка~
+## ~Разметка~
 
-All components should be left totally free of widths; your components should always remain fluid and their widths should be governed by a grid system.
+Все компоненты должны быть полностью независимы от ширины. Ваши компоненты должны всегда оставаться растягивающимися и их ширина должна регулироваться системой сетки.
 
-Heights should **never** be be applied to elements. Heights should only be applied to things which had dimensions _before_ they entered the site (i.e. images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything. You can normally achieve the desired effect with line-heights which are far more flexible.
+**Никогда** не указывайте высоту. Высота должна быть указана только у элементов которые имели высоту _до того_ как попали на сайт (т.е. картинки и спрайты). Вообще никогда не устанавливайте высоту для элементов `p`, `ul`, `div`, каких угодно. Обычно вы можете достич желаемого эффекта при помощи высоты строки (свойство `line-height`), что гараздо более гибко.
 
-Grid systems should be thought of as shelves. They contain content but are not content in themselves. You put up your shelves then fill them with your stuff.
+Систему сетки следует рассматривать в качестве полок. Они содержат контенет, но не являются им. Вы создаете стелаж из полок и затем наполняете его контентом.
 
-You should never apply any styles to a grid item, they are for layout purposes only. Never, under any circumstances, apply box-model properties to a grid item.
+Вам не следует никогда задавать какие-нибудь стили для служебных классов сетки, они нужны только для создания сетки. Никогда, ни при каких обстоятельствах, не применяйте свояства box-модели к элементам сетки.
 
 
 ## Размеры
 
-We use a combination of methods for sizing UIs. Percentages, pixels, ems, rems and nothing at all.
+Мы используем комбинацию методов для установки размеров элементов пользовательского интерфейса. Проценты, пиксели, em, rem'ы и, даже, вообще ничего.
 
 **См. также:**
 
@@ -93,11 +94,11 @@ We use a combination of methods for sizing UIs. Percentages, pixels, ems, rems a
 
 ## Размеры текста
 
-We use rems (with a pixel fallback for older browsers only). We do not want to define any font sizes in pixels as standard. We define line heights unitlessly everywhere **unless** we are trying to align text to known heights.
+Мы используем rem'ы (с откатом к пикселям для старых браузеров). Мы не хотим устанавливать размеры шрифтов в пикелах в качестве стандарта. ??? Мы оставляем свойство `line-height` безразмерным везде, только если мы не пытаемся выровнить текст по вертикали. ???
 
-We want to avoid defining font sizes over and over; to achieve this we have a predefined scale of font sizes tethered to classes. We can recycle these rather than having to declare styles over and over.
+Мы хотим избегать установки размера шрифта раз за разом, что бы достичь этого мы создаем предопределенные наборы размеров шрифтов в виде классов. И потом мы можем использовать эти классы повторно, вместо установки размера раз за разом.
 
-Before writing another font-size declaration, see if a class for it already exists.
+Перед тем как написать очередное свойство `font-size`, проверьте нет ли уже готового класса.
 
 **См. также:**
 
@@ -229,3 +230,4 @@ Whilst this is a very timid example, it does help illustrate how a lot of prepro
 Also, with mixins and the like, preprocessors teach you how to recognise abstractions&mdash;which is great&mdash;but not necessarily how to use them properly; there’s no point writing an abstracted mixin when you proceed to repeat it a dozen times in a stylesheet.
 
 Be sure to know the ins-and-outs of excellent vanilla CSS and where a preprocessor can _aid_ that, not hinder or undo it. Learn the downsides of preprocessors inside-out and then fuse the best aspects of the two with the bad bits of neither.
+
