@@ -1,9 +1,8 @@
 # Общие советы и рекомендации по CSS
-Русский перевод [оригинал](https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS%20Guidelines.md)
+Русский перевод ([оригинал](https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS%20Guidelines.md))
 
-**[мой твиттер](http://twitter.com/csswizardry)**
-**[твитнуть оригинал](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/)**
-**[твитнуть этот перевод](https://twitter.com/intent/tweet?text=%D0%A0%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BF%D0%BE%20CSS%20%D0%BE%D1%82%40%40csswizardry%3A+https://github.com/pozadi/CSS-Guidelines-ru/)**
+* [твиттер автора](http://twitter.com/csswizardry) / [твитнуть оригинал](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/)
+* [мой твиттер](http://twitter.com/meshokmuki) / [твитнуть перевод](https://twitter.com/intent/tweet?text=%D0%A0%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BF%D0%BE%20CSS%20%D0%BE%D1%82+%40csswizardry%3A+https://github.com/pozadi/CSS-Guidelines-ru/+%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BB%20%40meshokmuki)
 
 
 ## CSS документ
@@ -14,7 +13,7 @@
 
 Мы записываем каждое свойство на отделбной строке, что полезно для системы контроля версий, и сортируем свойства по смыслу, а не по оглавлению.
 
-Имена классов мы записываем строчными буквами используя дефис в качестве разделителя: `.thisIsBad{}` -- плохо, `.this_is_also_bad{}` -- тоже плохо, `.this-is-correct{}` -- хорошо.
+Имена классов мы записываем строчными буквами используя дефис в качестве разделителя: `.thisIsBad{}` &mdash; плохо, `.this_is_also_bad{}` &mdash; тоже плохо, `.this-is-correct{}` &mdash; хорошо.
 
 Мы всегда ставим знак `;` после последнего свойства, чтобы избежать потенциальную синтаксическую ошибку, которую потом трудно будет найти.
 
@@ -28,14 +27,14 @@
 
 ## Комментарии
 
-Comment as much as you can as often as you can. Where it might be useful, include a commented out piece of markup which can help put the current CSS into context.
+Комментируйте чем больше тем лучше. Всё что может быть полезным, можно даже вставить кусок HTML кода, который поможет понять текущий кусок CSS.
 
-Be verbose, go wild, CSS will be minified before it hits live servers.
+Не стесьняйтесь быть многословными, всёравно файл будет пропущен через минификатор.
 
 
 ## Отступы
 
-For each level of markup nesting, try and indent your CSS to match. For example:
+Для каждого уровня вложенности в HTML пытайтесь сделать соответствующие отступы в CSS. Например:
 
     .nav{}
         .nav li{}
@@ -44,21 +43,21 @@ For each level of markup nesting, try and indent your CSS to match. For example:
     .promo{}
         .promo p{}
 
-Also write vendor prefixed CSS so that colons all line up, thus:
+Также выравнивайте свойства с вендорными префиксами как-то так:
 
     -webkit-border-radius:4px;
        -moz-border-radius:4px;
             border-radius:4px;
 
-This means that we can quickly scan down and see that they are all set to 4px, but more importantly&mdash;if our text editor supports it&mdash;we can type in columns to change all the values at once.
+Это лучше читается, но более важно, что (если редактор это поддерживает) можно отредактировать столбец изменив значение сразу для всех свойств.
 
 
-## Building components
+## Создание новых ~компонентов~
 
 When building a new component write markup **before** CSS. This means you can visually see which CSS properties are naturally inherited and thus avoid reapplying redundant styles.
 
 
-## OOCSS
+## Объектно ориентированный CSS (OOCSS)
 
 When building components try and keep a DRY, OO frame of mind.
 
@@ -66,13 +65,13 @@ Instead of building dozens of unique components, try and spot repeated design pa
 
 If you have to build a new component split it into structure and skin; build the structure of the component using very generic classes so that we can reuse that construct and then use more specific classes to skin it up and add design treatments.
 
-**См. также**
+**См. также:**
 
 * [csswizardry.com/&hellip;/the-nav-abstraction](http://csswizardry.com/2011/09/the-nav-abstraction)
 * [stubbornella.org/&hellip;/the-media-object-saves-hundreds-of-lines-of-code](http://stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code)
 
 
-## Layout
+## Layout ~Разметка~
 
 All components should be left totally free of widths; your components should always remain fluid and their widths should be governed by a grid system.
 
@@ -87,7 +86,7 @@ You should never apply any styles to a grid item, they are for layout purposes o
 
 We use a combination of methods for sizing UIs. Percentages, pixels, ems, rems and nothing at all.
 
-**См. также**
+**См. также:**
 
 * [csswizardry.com/&hellip;/measuring-and-sizing-uis-2011-style](http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style)
 
@@ -100,7 +99,7 @@ We want to avoid defining font sizes over and over; to achieve this we have a pr
 
 Before writing another font-size declaration, see if a class for it already exists.
 
-**См. также**
+**См. также:**
 
 * [csswizardry.com/&hellip;/pragmatic-practical-font-sizing-in-css](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
 
@@ -128,27 +127,27 @@ Make sure styles aren’t dependent on location where possible, and make sure se
 
 **Помните:** classes are neither semantic or insemantic; they are sensible or insensible! Stop stressing about ‘semantic’ class names and pick something sensible and futureproof.
 
-**См. также**
+**См. также:**
 
 * [speakerdeck.com/&hellip;/breaking-good-habits](http://speakerdeck.com/u/csswizardry/p/breaking-good-habits)
 * [csswizardry.com/&hellip;/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
 
-### Over-qualified selectors
+### Слишком точные селекторы
 
 An over-qualified selector is one like `div.promo`. We could probably get the same effect from just using `.promo`. Of course sometimes we will _want_ to qualify a class with an element (e.g. if you have a generic `.error` class that needs to look different when applied to different elements (e.g. `.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it where possible.
 
 Another example of an over-qualified selector might be `ul.nav li a{}`. As above, we can instantly drop the `ul` and because we know `.nav` is a list, we therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}` down to just `.nav a{}`.
 
-### Performance
+### Производительность
 
 Whilst it is true that browsers will only ever keep getting faster at rendering CSS, efficiency is something we could do to keep an eye on. Short selectors, not using the universal (`*{}`) selector and avoiding more complex CSS3 selectors should help circumvent these problems.
 
-**См. также**
+**См. также:**
 
 * [csswizardry.com/…/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
 
 
-## Be explicit, don’t make assumptions
+## Be explicit, don’t make assumptions ~Будьте явными, не делайте предположений~
 
 Instead of using selectors to drill down the DOM to an element, it is often best to put a class on the element you explicitly want to style. Let’s take a specific example.
 
@@ -165,7 +164,7 @@ Do not use IDs in CSS **at all**. They can be used in your markup for JS and fra
 
 Classes come with the benefit of being reusable (even if we don’t want to, we can) and they have a nice, low specificity.
 
-**См. также**
+**См. также:**
 
 * [csswizardry.com/&hellip;/when-using-ids-can-be-a-pain-in-the-class](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class)
 
